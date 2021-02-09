@@ -14,7 +14,7 @@
     <title>ToDo</title>
     <link rel="stylesheet" href="./style.css">
 </head>
-<body>
+<body class="sunday">
     <header>
         <h1>Kuldip Todo List</h1>
     </header>
@@ -27,12 +27,12 @@
                 </div>
                 <div class="right-header">
                     <div class="add-note-btn" title="Add Note">
-                        <i class="far fa-clipboard icon"></i>
+                        <i class="far fa-clipboard"></i>
                     </div>
                     <div class="select" title="Filter List">
-                        <select name="todos" class="filter-todo" id="">
+                        <select name="todos" class="filter-todo">
                             <option value="all">All</option>
-                            <option value="complete">Complete</option>
+                            <option value="completed">Completed</option>
                             <option value="pendding">Pendding</option>
                         </select>
                     </div>
@@ -41,23 +41,21 @@
 
             <!-- TODO LIST -->
             <div class="todo-container">
-                <ul class="todo-list">
-                    
-                </ul>
+                <ul class="todo-list"></ul>
             </div>
 
             <!-- ADD NEW TODO ITEM-->
             <form>
                 <div class="add-item-container">
-                    <input type="text" class="todo-input" placeholder="Add To Do" />
+                    <input type="text" class="todo-input" placeholder="Add To Do" maxlength="50" />
                     <button class="add-btn" type="submit">
-                        <i class="fas fa-plus-circle"></i>
+                        <i class="fas fa-plus-circle icon"></i>
                     </button>
                 </div>
                 
                 <fieldset class="note">
                     <legend>Note</legend>
-                    <textarea name="note-input" id="todo-note"></textarea>
+                    <textarea name="note-input" id="todo-note" maxlength="100"></textarea>
                 </fieldset>
                 
             </form>
@@ -69,8 +67,3 @@
     <script src="./app.js"></script>
 </body>
 </html>
-
-<!-- 
-    <i class="far fa-check-square"></i>
-    <i class="far fa-square"></i>
- -->
