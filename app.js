@@ -6,19 +6,26 @@ const todoList = document.querySelector('.todo-list')
 const noteButton = document.querySelector('.add-note-btn')
 const note = document.querySelector('.note')
 const dateArea = document.querySelector('.date')
+const filter = document.querySelector('.filter-todo')
 
 // EVENTS
 document.addEventListener('DOMContentLoaded', getTodos)
 todoButton.addEventListener('click', addNewTodo)
 todoList.addEventListener('click', checkDelete)
-noteButton.addEventListener('click', toggleNote);
+noteButton.addEventListener('click', toggleNote)
+filter.addEventListener('click',filterTodo)
+note.addEventListener('keypress',function(e){
+    localStorage.setItem('note',note.children[1].value)
+})
+
 
 // FUNCTIONS
 today();
 function addNewTodo(event) {
     //Precent form fro submitting
     event.preventDefault();
-
+    if(todoInput.value == "")
+        return;
     //todo div
     const todoDiv = document.createElement('div');
     todoDiv.classList.add('todo-item');
@@ -45,7 +52,7 @@ function addNewTodo(event) {
 
     //trash bin
     const deleteTodo = document.createElement('button');
-    deleteTodo.innerHTML = '<i class="fas fa-trash icon"></i>';
+    deleteTodo.innerHTML = '<i class="fas fa-trash"></i>';
     deleteTodo.classList.add('delete-todo');
     todoDiv.appendChild(deleteTodo);
 
@@ -107,14 +114,22 @@ function saveLocalTodos(todo) {
 }
 
 function getTodos() {
-    console.log("GOD")
     // Check -- hey do I have already things in there
     let todos;
-    if (localStorage.getItem('todos') == null) {
+    if (localStorage.getItem('todos') === null) {
         todos = [];
     } else {
         todos = JSON.parse(localStorage.getItem('todos'));
     }
+
+    // check for note
+    let noteLocal;
+    if(localStorage.getItem('note') === null) {
+        noteLocal = "";
+    } else {
+        noteLocal = localStorage.getItem('note');
+    }
+    note.children[1].value = noteLocal;
 
     todos.forEach(function (todoItem) {
         //todo div
@@ -140,7 +155,7 @@ function getTodos() {
 
         //trash bin
         const deleteTodo = document.createElement('button');
-        deleteTodo.innerHTML = '<i class="fas fa-trash icon"></i>';
+        deleteTodo.innerHTML = '<i class="fas fa-trash"></i>';
         deleteTodo.classList.add('delete-todo');
         todoDiv.appendChild(deleteTodo);
     })
@@ -155,8 +170,13 @@ function removeLocalTodos(todo) {
         todos = JSON.parse(localStorage.getItem('todos'));
     }
 
-    const todoIndex = todo.children[1].innerText;
-    todos.splice(todos.indexOf(todoIndex), 1);
+    for (let i = 0; i < todos.length; i++) {
+        if (todos[i].todo === todo.children[1].innerText) {
+            todos.splice(i,1);
+        }
+    }
+
+    //todos.splice(todos.indexOf(todoIndex), 1);
     localStorage.setItem('todos', JSON.stringify(todos));
 }
 
@@ -176,6 +196,34 @@ function updateTodo(val, bool) {
         }
     }
     localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+function filterTodo(e){
+    console.log("event");
+    const todos = todoList.childNodes;
+    console.log(todos);
+    todos.forEach(function(todo){
+        console.log(todo);
+        switch(e.target.value) {
+            case 'all':
+                todo.style.display= "flex";
+                break;
+            case 'completed':
+                if(todo.classList.contains('complete')) {
+                    todo.style.display = "flex";
+                } else {
+                    todo.style.display = "none";
+                }
+                break;
+            case 'pendding':
+                if(!todo.classList.contains('complete')) {
+                    todo.style.display = "flex";
+                } else {
+                    todo.style.display = "none";
+                }
+                break;
+        }
+    })
 }
 
 function today() {
