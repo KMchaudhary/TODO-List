@@ -1,7 +1,3 @@
-/*
-white color = #E4E9FD
-*/
-
 * {
     padding: 0;
     margin: 0;
@@ -10,11 +6,13 @@ white color = #E4E9FD
 
 :root {
     --sunday: orange;
+    --sunday-dark: orangered;
+    --sunday-light: rgb(252, 183, 56);
     /* Monday */
     --monday: #29b6f6;
     --monday-dark: #0086c3;
     --monday-light: #73e8ff;
-    /* Tuesday */
+    /* thursday */
     --tuesday: #00695c;
     --tuesday-dark: #003d33;
     --tuesday-light: #439889;
@@ -41,6 +39,42 @@ body {
     color: rgba(0,0,0,.83);
 }
 
+/* Sunday */
+.sunday h1{
+    background-color: var(--sunday);
+    color: #fff;
+}
+.sunday main {
+    background-image: -webkit-linear-gradient(70deg, var(--sunday-light) 50%, #fff 50%);
+    color: rgba(0,0,0,.83)
+}
+.sunday .main-header {
+    background-color: var(--sunday);
+}
+.sunday .add-note-btn:hover {
+    background-color: rgba(255, 221, 215,0.3);
+}
+.sunday .select::after {
+    color: var(--sunday)
+}
+.sunday .select:hover::after {
+    background-color: var(--sunday-dark);
+    color: #fff;
+}
+.sunday.icon {
+    color: var(--sunday-dark);
+}
+.sunday .fa-check-square,.fa-square,.fa-plus-circle{
+    color: var(--sunday);
+}
+.sunday legend {
+    background-color: var(--sunday);
+    border: 2px solid var(--sunday-dark);
+}
+.sunday fieldset {
+    border: 2px solid var(--sunday-dark)
+}
+
 /* Monday */
 .monday h1{
     background-color: var(--monday-dark);
@@ -55,11 +89,14 @@ body {
 .monday .select::after {
     color: var(--monday)
 }
-.monday .select:hover:after {
+.monday .select:hover::after {
     background-color: var(--monday-dark);
     color: #fff;
 }
-.monday .fa-check-square, .far.fa-square, .add-btn{
+.monday .icon {
+    color: var(--monday-dark);
+}
+.monday .fa-check-square, .fa-square, .fa-plus-circle{
     color: var(--monday-dark);
 }
 .monday legend {
@@ -90,19 +127,20 @@ body {
 .tuesday .select::after {
     color: var(--tuesday)
 }
-.tuesday .select:hover:after {
+.tuesday .select:hover::after {
     background-color: var(--tuesday-dark);
     color: #fff;
 }
-.tuesday .fa-check-square, .far.fa-square, .add-btn{
+.tuesday .icon {
     color: var(--tuesday-dark);
 }
 .tuesday legend {
     background-color: var(--tuesday);
     border: 2px solid var(--tuesday-dark);
+    color: #fff;
 }
 .tuesday fieldset {
-    border: 2px solid var(--tuesday-dark)
+    border: 2px solid var(--tuesday-dark);
 }
 
 /* Wednesday */
@@ -122,11 +160,14 @@ body {
 .wednesday .select::after {
     color: var(--wednesday);
 }
-.wednesday .select:hover:after {
+.wednesday .select:hover::after {
     background-color: var(--wednesday-dark);
     color: #fff;
 }
-.wednesday .fa-check-square, .far.fa-square, .add-btn{
+.wednesday .icon {
+    color: var(--wednesday-dark);
+}
+.wednesday .fa-check-square, .fa-square, .fa-plus-circle {
     color: var(--wednesday-dark);
 }
 .wednesday legend {
@@ -154,11 +195,14 @@ body {
 .thursday .select::after {
     color: var(--thursday);
 }
-.thursday .select:hover:after {
+.thursday .select:hover::after {
     background-color: var(--thursday-dark);
     color: #fff;
 }
-.thursday .fa-check-square, .far.fa-square, .add-btn{
+.thursday .icon {
+    color: var(--thursday-dark);
+}
+.thursday .fa-check-square, .fa-square, .fa-plus-circle{
     color: var(--thursday-dark);
 }
 .thursday legend {
@@ -183,8 +227,11 @@ body {
 .friday .fa-clipboard {
     color: black;
 }
-.friday .add-note-btn:hover {
+.friday .add-note-btn::hover {
     background-color: rgba(255,255,255,.3);
+}
+.friday .icon {
+    color: var(--friday-dark);
 }
 .friday .select::after {
     color: var(--friday);
@@ -193,7 +240,7 @@ body {
     background-color: var(--friday-dark);
     color: #fff;
 }
-.friday .fa-check-square, .far.fa-square, .add-btn{
+.friday .fa-check-square, .fa-square, .fa-plus-circle {
     color: var(--friday-dark);
 }
 .friday legend {
@@ -221,11 +268,14 @@ body {
 .saturday .select::after {
     color: var(--saturday);
 }
-.saturday .select:hover:after {
+.saturday .select:hover::after {
     background-color: var(--saturday-dark);
     color: #fff;
 }
-.saturday .fa-check-square, .far.fa-square, .add-btn{
+.saturday .icon {
+    color: var(--saturday-dark);
+}
+.saturday .fa-check-square, .fa-square, .fa-plus-circle {
     color: var(--saturday-dark);
 }
 .saturday legend {
@@ -238,11 +288,11 @@ body {
 
 header h1 {
     padding: 1rem 1.5rem;
-    background-color: orange;
+    /* background-color: orange; */
 }
 
 main {
-    background-image: -webkit-linear-gradient(70deg, orange 50%, #fff 50%);
+    /* background-image: -webkit-linear-gradient(70deg, orange 50%, #fff 50%); */
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -257,7 +307,7 @@ main {
 
 .main-header {
     margin-top: 1rem;
-    background-color: orange;
+    /* background-color: orange; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -320,7 +370,7 @@ select {
     content: '\25BC';
     height: 40px;
     width: 40px;
-    color: orange;
+    /* color: orange; */
     position: absolute;
     top: 0;
     right: 0;
@@ -332,7 +382,7 @@ select {
 }
 
 .select:hover:after {
-    background-color: orangered;
+    /* background-color: orangered; */
     color: white;
 }
 
@@ -387,7 +437,7 @@ select {
     flex: 1;
     font-size: 1.5rem;
     line-height: 1.5;
-    padding: 0 1rem;
+    padding: .5rem 1rem;
 }
 
 .fa-trash {
@@ -412,6 +462,7 @@ select {
 /*icon size for all fas & far classs*/
 .fas, .far {
     font-size: 24px;
+    pointer-events: none;
 }
 
 /* ADD NEW TODO ITEM */
@@ -435,6 +486,7 @@ form {
     border-radius: 3px;
     margin-right: .5rem;
     outline: 0;
+    min-width: 200px;
 }
 
 .todo-input:focus {
@@ -493,4 +545,56 @@ fieldset textarea {
 
 .display-note {
     display: block;
+}
+
+/* .save-note {
+    display: block;
+    margin: 12px auto;
+    padding: .5rem 1rem;
+    font-family: 'Montserrat',sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    outline: 0;
+    cursor: pointer;
+} */
+
+@media screen and (max-width: 500px){
+    .main-header {
+        padding: .5rem;
+    }
+    .date {
+        font-size: 16px;
+    }
+    .wrapper {
+        padding: 0 1rem;
+    }
+    li.todo {
+        font-size: 1rem;
+        font-weight: 500;
+        min-width: 180px;
+    }
+    .far, .fas {
+        font-size: 20px;
+    }
+    .todo-item button, .add-note-btn {
+        width: 36px;
+        height: 36px;
+    }
+    select {
+        height: 36px;
+        padding: 0 36px 0 12px;
+    }
+    .select::after {
+        width: 36px;
+        height: 36px;
+    }
+    li.todo {
+        padding: .5rem 12px;
+        min-width: 100px;
+    }
+    .todo-input {
+        font-size: 1rem;
+        font-weight: 500;
+    }
 }
